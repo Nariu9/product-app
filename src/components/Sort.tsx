@@ -1,4 +1,18 @@
+import { useState } from 'react'
+
+type SortCategoryType = 'popularity' | 'price' | 'title'
+
 export const Sort = () => {
+  const sortCategories: SortCategoryType[] = ['popularity', 'price', 'title']
+  const [selectMode, setSelectMode] = useState(false)
+  const [sortCategory, setSortCategory] = useState<SortCategoryType>('popularity')
+
+  const turnOnSelectMode = () => setSelectMode(true)
+  const chooseSortCategory = (category: SortCategoryType) => () => {
+    setSortCategory(category)
+    setSelectMode(false)
+  }
+
   return (
     <div className='sort'>
       <div className='sort__label'>
@@ -15,15 +29,23 @@ export const Sort = () => {
           />
         </svg>
         <b>Sort by:</b>
-        <span>popularity</span>
+        <span onClick={turnOnSelectMode}>{sortCategory}</span>
       </div>
-      <div className='sort__popup'>
-        <ul>
-          <li className='active'>popularity</li>
-          <li>price</li>
-          <li>title</li>
-        </ul>
-      </div>
+      {selectMode && (
+        <div className='sort__popup'>
+          <ul>
+            {sortCategories.map((el) => (
+              <li
+                key={el}
+                onClick={chooseSortCategory(el)}
+                className={el === sortCategory ? 'active' : ''}
+              >
+                {el}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   )
 }
