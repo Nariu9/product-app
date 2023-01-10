@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './scss/App.scss'
 import { Header } from './components/Header'
 import { Categories } from './components/Categories'
 import { Sort } from './components/Sort'
 import { Product } from './components/Product'
-import products from './assets/data/products.json'
+// import products from './assets/data/products.json'
 
 type ProductType = {
   id: number
@@ -18,6 +18,15 @@ type ProductType = {
 }
 
 function App() {
+  const [products, setProducts] = useState<ProductType[]>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch('https://product-back.vercel.app/')
+      setProducts(await data.json())
+    }
+    fetchData().catch(console.error)
+  }, [])
   return (
     <div className='wrapper'>
       <Header />
