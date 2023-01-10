@@ -4,6 +4,18 @@ import { Header } from './components/Header'
 import { Categories } from './components/Categories'
 import { Sort } from './components/Sort'
 import { Product } from './components/Product'
+import products from './assets/data/products.json'
+
+type ProductType = {
+  id: number
+  imageUrl: string
+  title: string
+  types: number[]
+  sizes: string[]
+  price: number
+  category: number
+  rating: number
+}
 
 function App() {
   return (
@@ -17,14 +29,16 @@ function App() {
           </div>
           <h2 className='content__title'>All pizzas</h2>
           <div className='content__items'>
-            <Product title={'Neapolitan Pizza'} price={3} />
-            <Product title={'Chicago Pizza'} price={6} />
-            <Product title={'New York-Style Pizza'} price={5} />
-            <Product title={'Sicilian Pizza'} price={8} />
-            <Product title={'Greek Pizza'} price={4} />
-            <Product title={'California Pizza'} price={5} />
-            <Product title={'Detroit Pizza'} price={7} />
-            <Product title={'St. Louis Pizza'} price={5.5} />
+            {products.map((prod: ProductType) => (
+              <Product
+                key={prod.id}
+                img={prod.imageUrl}
+                title={prod.title}
+                price={prod.price}
+                types={prod.types}
+                sizes={prod.sizes}
+              />
+            ))}
           </div>
         </div>
       </div>
