@@ -1,34 +1,49 @@
 import { useState } from 'react'
 
 type ProductType = {
+  img: string
   title: string
   price: number
+  types: number[]
+  sizes: string[]
 }
 
-export const Product = ({ title, price }: ProductType) => {
+export const Product = ({ img, title, price, types, sizes }: ProductType) => {
   const [count, setCount] = useState(0)
+  const [activeType, setActiveType] = useState<null | number>(null)
+  const [activeSize, setSize] = useState<null | string>(null)
+  const typesValues = ['thin', 'traditional', 'gluten free']
 
   const incrementHandler = () => setCount((prevState) => prevState + 1)
+  const changeActiveTypeHandler = (type: number) => () => setActiveType(type)
+  const changeActiveSizeHandler = (size: string) => () => setSize(size)
 
   return (
     <div className='pizza-block'>
-      <img
-        className='pizza-block__image'
-        src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg'
-        alt='Pizza'
-      />
+      <img className='pizza-block__image' src={img} alt='Pizza' />
       <h4 className='pizza-block__title'>{title}</h4>
       <div className='pizza-block__selector'>
         <ul>
-          <li className='active'>thin</li>
-          <li>traditional</li>
-          <li>gluten free</li>
+          {types.map((type) => (
+            <li
+              key={type}
+              onClick={changeActiveTypeHandler(type)}
+              className={type === activeType ? 'active' : ''}
+            >
+              {typesValues[type]}
+            </li>
+          ))}
         </ul>
         <ul>
-          <li className='active'>10″</li>
-          <li>14″</li>
-          <li>16″</li>
-          <li>18″</li>
+          {sizes.map((size) => (
+            <li
+              key={size}
+              onClick={changeActiveSizeHandler(size)}
+              className={size === activeSize ? 'active' : ''}
+            >
+              {size}
+            </li>
+          ))}
         </ul>
       </div>
       <div className='pizza-block__bottom'>
