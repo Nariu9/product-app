@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import classes from './Sort.module.scss'
 
 type SortCategoryType = 'popularity' | 'price' | 'title'
 
@@ -14,8 +15,8 @@ export const Sort = () => {
   }
 
   return (
-    <div className='sort'>
-      <div className='sort__label'>
+    <div className={classes.sort}>
+      <div className={classes.label}>
         <svg
           width='10'
           height='6'
@@ -32,13 +33,13 @@ export const Sort = () => {
         <span onClick={turnOnSelectMode}>{sortCategory}</span>
       </div>
       {selectMode && (
-        <div className='sort__popup'>
+        <div className={classes.popup}>
           <ul>
             {sortCategories.map((el) => (
               <li
                 key={el}
                 onClick={chooseSortCategory(el)}
-                className={el === sortCategory ? 'active' : ''}
+                className={el === sortCategory ? classes.active : ''}
               >
                 {el}
               </li>
