@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import classes from './Categories.module.scss'
 
 type CategoriesType = 'All' | 'Meat' | 'Vegan' | 'Grill' | 'Spicy' | 'Exotic'
 
@@ -9,13 +10,13 @@ export const Categories = () => {
   const setActiveHandler = (category: CategoriesType) => () => setActiveCategory(category)
 
   return (
-    <div className='categories'>
+    <div className={classes.categories}>
       <ul>
         {categories.map((el) => (
           <li
             key={el}
             onClick={setActiveHandler(el)}
-            className={activeCategory === el ? 'active' : ''}
+            className={activeCategory === el ? classes.active : ''}
           >
             {el}
           </li>
