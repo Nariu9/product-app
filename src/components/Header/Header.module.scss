@@ -1,0 +1,49 @@
+@import '../../common/styles/scss/Variables';
+
+.header {
+  border-bottom: 1px solid $gray-line;
+  padding: 40px 0;
+  width: $container-width;
+  margin: 0 auto;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and (max-width: 665px) {
+      flex-direction: column;
+      row-gap: 20px;
+    }
+  }
+
+  .logo {
+    display: flex;
+
+    @media screen and (max-width: 410px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    img {
+      margin-right: 15px;
+
+      @media screen and (max-width: 410px) {
+        align-self: center;
+        margin: 0 0 5px 0;
+      }
+    }
+
+    h1 {
+      color: #181818;
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    p {
+      color: #7b7b7b;
+    }
+  }
+}
