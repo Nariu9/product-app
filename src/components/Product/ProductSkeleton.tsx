@@ -1,8 +1,9 @@
 import ContentLoader from 'react-content-loader'
+import classes from './Product.module.scss'
 
 export const ProductSkeleton = () => (
   <ContentLoader
-    className={'pizza-block'}
+    className={classes.pizzaBlock}
     speed={2}
     width={280}
     height={465}

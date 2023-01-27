@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import classes from './Product.module.scss'
 
 type ProductType = {
   img: string
@@ -19,16 +20,16 @@ export const Product = ({ img, title, price, types, sizes }: ProductType) => {
   const changeActiveSizeHandler = (size: string) => () => setSize(size)
 
   return (
-    <div className='pizza-block'>
-      <img className='pizza-block__image' src={img} alt='Pizza' />
-      <h4 className='pizza-block__title'>{title}</h4>
-      <div className='pizza-block__selector'>
+    <div className={classes.pizzaBlock}>
+      <img className={classes.image} src={img} alt='Pizza' />
+      <h4 className={classes.title}>{title}</h4>
+      <div className={classes.selector}>
         <ul>
           {types.map((type) => (
             <li
               key={type}
               onClick={changeActiveTypeHandler(type)}
-              className={type === activeType ? 'active' : ''}
+              className={type === activeType ? classes.active : ''}
             >
               {typesValues[type]}
             </li>
@@ -39,15 +40,15 @@ export const Product = ({ img, title, price, types, sizes }: ProductType) => {
             <li
               key={size}
               onClick={changeActiveSizeHandler(size)}
-              className={size === activeSize ? 'active' : ''}
+              className={size === activeSize ? classes.active : ''}
             >
               {size}
             </li>
           ))}
         </ul>
       </div>
-      <div className='pizza-block__bottom'>
-        <div className='pizza-block__price'>from $ {price}</div>
+      <div className={classes.bottom}>
+        <div className={classes.price}>from $ {price}</div>
         <button className='button button--outline button--add' onClick={incrementHandler}>
           <svg
             width='12'
