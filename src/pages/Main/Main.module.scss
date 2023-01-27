@@ -1,0 +1,27 @@
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (max-width: 1150px) {
+    flex-direction: column-reverse;
+    row-gap: 30px;
+  }
+}
+
+.title {
+  margin: 35px 0;
+  font-size: 32px;
+
+  @media screen and (max-width: 735px) {
+    text-align: center;
+  }
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  place-items: center;
+}

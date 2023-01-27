@@ -1,8 +1,9 @@
-import { Categories } from '../../components/Categories'
-import { Sort } from '../../components/Sort'
+import { Categories } from '../../components/Categories/Categories'
+import { Sort } from '../../components/Sort/Sort'
 import { ProductSkeleton } from '../../components/Product/ProductSkeleton'
 import { Product } from '../../components/Product/Product'
 import { useLoaderData, useNavigation } from 'react-router-dom'
+import classes from './Main.module.scss'
 
 type ProductType = {
   id: number
@@ -21,12 +22,12 @@ export const Main = () => {
 
   return (
     <>
-      <div className='content__top'>
+      <div className={classes.top}>
         <Categories />
         <Sort />
       </div>
-      <h2 className='content__title'>All pizzas</h2>
-      <div className='content__items'>
+      <h2 className={classes.title}>All pizzas</h2>
+      <div className={classes.items}>
         {navigation.state === 'loading'
           ? [...new Array(8)].map((_, i) => <ProductSkeleton key={i} />)
           : products.map((prod) => (
