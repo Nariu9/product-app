@@ -1,4 +1,5 @@
 @import '../../common/styles/scss/Variables';
+@import '../../common/styles/scss/Normalize';
 
 .pizzaBlock {
   width: 280px;
@@ -37,6 +38,7 @@
         cursor: pointer;
         font-weight: 600;
         font-size: 14px;
+        @include noselect();
         &.active {
           background: #ffffff;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

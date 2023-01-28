@@ -1,3 +1,5 @@
+@import '../../common/styles/scss/Normalize';
+
 .categories {
   ul {
     display: flex;
@@ -16,6 +18,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
+      @include noselect();
 
       @media screen and (max-width: 665px){
         padding: 8px 20px;
