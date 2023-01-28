@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import classes from './Product.module.scss'
+import btnStyles from '../../common/styles/scss/Button.module.scss'
 
 type ProductType = {
   img: string
@@ -49,7 +50,10 @@ export const Product = ({ img, title, price, types, sizes }: ProductType) => {
       </div>
       <div className={classes.bottom}>
         <div className={classes.price}>from $ {price}</div>
-        <button className='button button--outline button--add' onClick={incrementHandler}>
+        <button
+          className={`${btnStyles.button} ${btnStyles.outline} ${btnStyles.add}`}
+          onClick={incrementHandler}
+        >
           <svg
             width='12'
             height='12'
