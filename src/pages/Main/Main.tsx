@@ -4,6 +4,7 @@ import { ProductSkeleton } from '../../components/Product/ProductSkeleton'
 import { Product } from '../../components/Product/Product'
 import { useLoaderData, useNavigation } from 'react-router-dom'
 import classes from './Main.module.scss'
+import { useEffect } from 'react'
 
 type ProductType = {
   id: number
@@ -19,6 +20,10 @@ type ProductType = {
 export const Main = () => {
   const products = useLoaderData() as ProductType[]
   const navigation = useNavigation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <>
